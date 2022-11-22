@@ -46,7 +46,7 @@ if __name__ == "__main__":
     st = time.time()
     alphabet = [chr(i + 65) for i in range(26)]
     print(alphabet)
-    for j in range(2):
+    for _ in range(2):
         abs_chars = shutudai(alphabet)
         ret = kaitou(abs_chars)
         if ret:
