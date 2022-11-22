@@ -40,7 +40,6 @@ def kaitou(abs_chars):
 
         print("全部正解です。")
         return True
-        
             
 
 if __name__ == "__main__":
