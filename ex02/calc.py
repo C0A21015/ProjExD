@@ -66,7 +66,17 @@ def button_click(event):
         entry.insert(tk.END,f"{math.pi}")
 
     elif num == "e":
-        entry.insert(tk.END,f"{math.e}")    
+        entry.insert(tk.END,f"{math.e}") 
+    elif num == "√":
+        if siki =="":
+            pass
+        else:
+            res=eval(siki)
+            if int(res) < 0:
+                    pass
+            else: 
+                entry.delete(0, tk.END) # 表示文字列の削除
+                entry.insert(tk.END,f"{math.sqrt(int(res))}")     
 
     else: # 「=」以外のボタン字
         #tkm.showinfo("", f"{num}ボタンがクリックされました")
@@ -79,7 +89,7 @@ entry = tk.Entry(root, justify="right", width=15, font=("",40))
 entry.grid(row=0, column=0, columnspan=4)
 
 r, c = 1, 0
-operators = ["00","e","π","+","7","8","9","-","4","5","6","×","1","2","3","÷","C","0",".", "="]
+operators = ["√","e","π","+","7","8","9","-","4","5","6","×","1","2","3","÷","C","0",".", "="]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=2, font=("", 30))
     button.grid(row=r, column=c)
