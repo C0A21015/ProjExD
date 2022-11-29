@@ -6,6 +6,7 @@ def button_click(event):
     btn = event.widget
     num = btn["text"]
     siki = entry.get() # 数式の文字列
+    
     if num == "=":
         if siki=="":
             pass
@@ -80,7 +81,7 @@ def button_click(event):
 
     else: # 「=」以外のボタン字
         #tkm.showinfo("", f"{num}ボタンがクリックされました")
-        entry.insert(tk.END, num)
+            entry.insert(tk.END, num)
 
 root = tk.Tk()
 root.geometry("450x600")
