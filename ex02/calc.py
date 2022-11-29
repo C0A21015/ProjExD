@@ -6,7 +6,7 @@ def button_click(event):
     btn = event.widget
     num = btn["text"]
     siki = entry.get() # 数式の文字列
-    
+
     if num == "=":
         if siki=="":
             pass
@@ -90,7 +90,7 @@ entry = tk.Entry(root, justify="right", width=15, font=("",40))
 entry.grid(row=0, column=0, columnspan=4)
 
 r, c = 1, 0
-operators = ["√","e","π","+","7","8","9","-","4","5","6","×","1","2","3","÷","C","0",".", "="]
+operators = ["√", "e", "π", "+", "7", "8", "9", "-", "4", "5", "6", "×", "1", "2", "3", "÷", "C", "0", ".", "="]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=2, font=("", 30))
     button.grid(row=r, column=c)
