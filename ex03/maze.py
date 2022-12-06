@@ -35,9 +35,9 @@ def main_proc():
     canvas.coords("kokaton" , cx , cy) 
     root.after(100 , main_proc)          
 
-def option():
+def option(): #追加機能
     global cx , cy, mx , my , key
-    if key == "r": #「ｒ」でリセット
+    if key == "r": #ｒキーでリセット
         mx , my = 1  , 0
     if mx == 13 and my ==8:  #ゴールしたことを知らせる
         tkm.showinfo("ゴール","ゴールしました")
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     canvas.pack()
     maze_list = mm.make_maze(15,9)
     mm.show_maze(canvas , maze_list)
-    num = random.randint(0,9)
+    num = random.randint(0,9) #ランダムのこうかとん画像を決める
     images = tk.PhotoImage(file=f"fig/{num}.png")
     mx , my = 1 , 0
     cx , cy = mx*150 , my*150 #初期位置
