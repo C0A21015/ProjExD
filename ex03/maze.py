@@ -10,17 +10,27 @@ def key_up(event):
     key=""
 
 def main_proc():
-    global cx , cy
+    global cx , cy , mx , my
     if key == "Up":
-        cy -=100
+        my -=1
     elif key == "Down":
-        cy += 100
+        my += 1
     elif key == "Left":
-        cx -= 100
+        mx -= 1
     elif key == "Right":
-        cx += 100
+        mx += 1
+    if maze_list[mx][my] == 1: #移動先が壁なら
+        if key == "Up":
+           my +=1
+        elif key == "Down":
+            my -= 1
+        elif key == "Left":
+            mx += 1
+        elif key == "Right":
+            mx -= 1
+    cx , cy = mx*100+50 , my*100+50     
     canvas.coords("kokaton" , cx , cy) 
-    root.after(150 , main_proc)          
+    root.after(100 , main_proc)          
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -32,7 +42,9 @@ if __name__ == "__main__":
     mm.show_maze(canvas , maze_list)
 
     images = tk.PhotoImage(file="fig/0.png")
-    cx , cy = 150 , 150 #初期位置
+
+    mx , my = 1 , 1
+    cx , cy = mx*150 , my*150 #初期位置
     canvas.create_image(cx , cy , image=images , tag="kokaton")
     key=""
     root.bind("<KeyPress>" , key_down)
