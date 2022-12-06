@@ -5,14 +5,17 @@ import random
 
 def key_down(event):
     global key
+
     key = event.keysym
 
 def key_up(event):
     global key
+    
     key=""
 
 def main_proc():
     global cx , cy , mx , my
+
     if key == "Up":
         my -=1
     elif key == "Down": 
@@ -37,6 +40,7 @@ def main_proc():
 
 def option(): #追加機能
     global cx , cy, mx , my , key
+
     if key == "r": #ｒキーでリセット
         mx , my = 1  , 0
     if mx == 13 and my ==8:  #ゴールしたことを知らせる
