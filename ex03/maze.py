@@ -10,7 +10,7 @@ def key_down(event):
 
 def key_up(event):
     global key
-    
+
     key=""
 
 def main_proc():
@@ -54,7 +54,7 @@ def option(): #追加機能
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
-    canvas = tk.Canvas(root , width=1500 , height=900 , bg="black")
+    canvas = tk.Canvas(root, width=1500, height=900, bg="black")
     canvas.pack()
     maze_list = mm.make_maze(15,9)
     mm.show_maze(canvas , maze_list)
