@@ -2,7 +2,6 @@ import pygame as pg
 import sys
 import random
 
-
 def check_bound(obj_rct, scr_rct):
     # 第1引数：こうかとんrectまたは爆弾rect
     # 第2引数：スクリーンrect
@@ -13,7 +12,6 @@ def check_bound(obj_rct, scr_rct):
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
         tate = -1
     return yoko, tate
-
 
 def main():
     clock =pg.time.Clock()
@@ -101,7 +99,6 @@ def main():
             scrn_sfc.blit(txt,(400,350))
         pg.display.update()
         clock.tick(1000)
-
 
 if __name__ == "__main__":
     pg.init()
