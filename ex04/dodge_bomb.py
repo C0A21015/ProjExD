@@ -39,6 +39,7 @@ def main():
     scrn_sfc.blit(bomb_sfc, bomb_rct) 
     vx,vy,vx1,vy1 = 1,1,1,1
     
+    #for文を使用
     bomb2_sfc = pg.image.load("fig/bomb.png")
     bomb2_sfc = pg.transform.rotozoom(bomb2_sfc,0,0.1) 
     bomb2_rct = bomb2_sfc.get_rect()
