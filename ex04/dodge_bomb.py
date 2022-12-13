@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 import random
 
+
 def check_bound(obj_rct, scr_rct):
     # 第1引数：こうかとんrectまたは爆弾rect
     # 第2引数：スクリーンrect
@@ -32,15 +33,20 @@ def main():
     scrn_sfc.blit(tori_sfc, tori_rct)
 
     # 練習5
-    bomb_sfc = pg.Surface((20,20)) #正方形の空のSurface
-    bomb_sfc.set_colorkey((0,0,0))
-    pg.draw.circle(bomb_sfc,(255,0,0),(10,10),10) #(surface,色,位置(横10,縦10),半径10の円)
+    bomb_sfc = pg.image.load("fig/bomb.png")
+    bomb_sfc = pg.transform.rotozoom(bomb_sfc,0,0.05) 
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = random.randint(0, scrn_rct.width)
     bomb_rct.centery = random.randint(0, scrn_rct.height)
     scrn_sfc.blit(bomb_sfc, bomb_rct) 
-    vx, vy = +1, +1
-
+    vx,vy,vx1,vy1 = 1,1,1,1
+    
+    bomb2_sfc = pg.image.load("fig/bomb.png")
+    bomb2_sfc = pg.transform.rotozoom(bomb2_sfc,0,0.1) 
+    bomb2_rct = bomb2_sfc.get_rect()
+    bomb2_rct.centerx = random.randint(0, scrn_rct.width)
+    bomb2_rct.centery = random.randint(0, scrn_rct.height)
+    scrn_sfc.blit(bomb2_sfc, bomb2_rct) 
 
     # 練習2
     while True:
@@ -48,7 +54,6 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
-
         # 練習4
         key_dct = pg.key.get_pressed() # 辞書型
         if key_dct[pg.K_UP]:
@@ -73,14 +78,27 @@ def main():
 
         # 練習６
         bomb_rct.move_ip(vx, vy)
-        scrn_sfc.blit(bomb_sfc, bomb_rct) 
+        bomb2_rct.move_ip(vx1, vy1)
+        scrn_sfc.blit(bomb_sfc, bomb_rct)
+        scrn_sfc.blit(bomb2_sfc, bomb2_rct) 
         yoko, tate = check_bound(bomb_rct, scrn_rct)
         vx *= yoko
         vy *= tate
+        yoko, tate = check_bound(bomb2_rct, scrn_rct)
+        vx1 *= yoko
+        vy1 *= tate
 
         # 練習8
-        if tori_rct.colliderect(bomb_rct):
-            return
+        if tori_rct.colliderect(bomb_rct) or tori_rct.colliderect(bomb2_rct):
+            fonto = pg.font.Font(None,200)
+            txt = fonto.render("GAME OVER",True,(0,0,0))
+            vx,vy,vx1,vy1 =0,0,0,0
+            tori2_sfc = pg.image.load("fig/8.png")
+            tori2_sfc = pg.transform.rotozoom(tori2_sfc, 0, 2.0)
+            tori2_rct = tori2_sfc.get_rect()
+            tori2_rct.center = tori_rct.centerx,tori_rct.centery
+            scrn_sfc.blit(tori2_sfc, tori2_rct)
+            scrn_sfc.blit(txt,(400,350))
         pg.display.update()
         clock.tick(1000)
 
