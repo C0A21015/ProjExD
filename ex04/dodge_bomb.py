@@ -90,7 +90,7 @@ def main():
         if tori_rct.colliderect(bomb_rct) or tori_rct.colliderect(bomb2_rct):
             fonto = pg.font.Font(None,200)
             txt = fonto.render("GAME OVER",True,(0,0,0))
-            vx,vy,vx1,vy1 =0,0,0,0
+            vx, vy, vx1, vy1 =0, 0, 0, 0
             tori2_sfc = pg.image.load("fig/8.png")
             tori2_sfc = pg.transform.rotozoom(tori2_sfc, 0, 2.0)
             tori2_rct = tori2_sfc.get_rect()
