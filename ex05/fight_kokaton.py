@@ -96,7 +96,6 @@ def check_bound(obj_rct, scr_rct):
     return yoko, tate
 
 
-
 def main():
     clock =pg.time.Clock()
 
@@ -131,20 +130,16 @@ def main():
 
         kkt.update(scr)
         gd.update(scr)
+
         if kkt.rct.colliderect(gd.rct): #安全地帯にいる場合，爆弾を無効化
             for bomb in bombs:
                 bomb.update(scr)
-                    
         else:
             for bomb in bombs:
                 bomb.update(scr)          
                 if kkt.rct.colliderect(bomb.rct):
                     return
-        gd.update(scr)
 
-        
-        
-        
         pg.display.update()
         clock.tick(1000)
 
