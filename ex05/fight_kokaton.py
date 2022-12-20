@@ -93,6 +93,7 @@ def check_bound(obj_rct, scr_rct):
         yoko = -1
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
         tate = -1
+        
     return yoko, tate
 
 
